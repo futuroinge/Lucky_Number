@@ -39,7 +39,7 @@ public class Cupcake4 {
                     System.out.println("correcto" + "\n");
                 } else {
                     life--;
-                    System.out.println("Incorrecto" + "Checaste los acentos" +"\n");
+                    System.out.println("Incorrecto" + "Checaste los acentos?" +"\n");
                 }
                 if (life > 0) {
                   System.out.println("vidas: " + life);  
