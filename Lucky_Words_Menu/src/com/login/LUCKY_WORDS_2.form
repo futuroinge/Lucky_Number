@@ -26,8 +26,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="field" max="32767" attributes="0"/>
-                  <Component id="area" max="32767" attributes="0"/>
+                  <Component id="contarPreguntas" max="32767" attributes="0"/>
+                  <Component id="almacenarPreguntas" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="botonA" pref="59" max="32767" attributes="0"/>
@@ -42,13 +42,22 @@
                           <Component id="respuestaC" max="32767" attributes="0"/>
                           <Component id="respuestaD" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buenas" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="labelSegundos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="porcentage" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="buenas" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="labelSegundos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="porcentage" min="-2" pref="109" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -59,13 +68,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="field" min="-2" max="-2" attributes="0"/>
+              <Component id="contarPreguntas" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="area" min="-2" max="-2" attributes="0"/>
+              <Component id="almacenarPreguntas" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonA" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="respuestaA" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="respuestaA" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jProgressBar1" pref="25" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="botonA" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -94,22 +107,28 @@
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="labelSegundos" pref="46" max="32767" attributes="0"/>
+              <Component id="labelSegundos" pref="32" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="field">
+    <Component class="javax.swing.JTextField" name="contarPreguntas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pregunta:1"/>
+        <Property name="text" type="java.lang.String" value="contarPreguntas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contarPreguntasActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="area">
+    <Component class="javax.swing.JTextField" name="almacenarPreguntas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="text" type="java.lang.String" value="almacenarPreguntas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="almacenarPreguntasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonA">
       <Properties>
@@ -145,21 +164,28 @@
     </Component>
     <Component class="javax.swing.JTextField" name="respuestaA">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="jTextField2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="respuestaAActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="respuestaB">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="jTextField2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="respuestaC">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="jTextField2"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="respuestaD">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="jTextField2"/>
       </Properties>
     </Component>
@@ -167,16 +193,27 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buenas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buenasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="porcentage">
       <Properties>
         <Property name="text" type="java.lang.String" value="Porcentage"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="porcentageActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="labelSegundos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
+        <Property name="text" type="java.lang.String" value="timer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labelSegundosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="jProgressBar1">
     </Component>
   </SubComponents>
 </Form>
