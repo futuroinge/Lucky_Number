@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
@@ -40,9 +42,10 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         "¿Cuál es el país más pequeño de Asia?",
         "¿Cuál es el país más grande de Centroamérica?",
         "¿Cuál es el país más grande de América del Sur?"
+
     };
 
-    //base de datos de las pregutuntas
+    //base de datos de las respuestas
     String[] respuesta = {
         "Australia",
         "Canadá",
@@ -90,7 +93,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
     //Cronometro NO TOCAR 
     Timer timer = new Timer(1000, new ActionListener() {
-        @Override
+        @Override // corta la herencia de la superclase
         public void actionPerformed(ActionEvent e) {
             segundos--;
             labelSegundos.setText(String.valueOf(segundos));
@@ -99,7 +102,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
                 verRespuesta();
             }
         }
-
     });
     //Aqui termina el cronometro
 
@@ -144,19 +146,15 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
         if (!(num[j] >= 1 && num[j] <= 2)) {
             respuestaA.setForeground(Color.RED);
-            life--;
         }
         if (!(num[j] >= 3 && num[j] <= 5)) {
             respuestaB.setForeground(Color.RED);
-            life--;
         }
         if (!(num[j] >= 6 && num[j] <= 7)) {
             respuestaC.setForeground(Color.RED);
-            life--;
         }
         if (!(num[j] >= 8 && num[j] <= 10)) {
             respuestaD.setForeground(Color.RED);
-            life--;
         }
         Timer pause = new Timer(2000, new ActionListener() {
             @Override
@@ -175,7 +173,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
                 siguientePregunta();
             }
-
         });
         j++;
         pause.setRepeats(false);
@@ -187,16 +184,41 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         respuestaB.setEnabled(false);
         respuestaC.setEnabled(false);
         botonD.setEnabled(false);
-        resultado = (int) ((correctas / (double) total_preguntas) * 100);
-        contarPreguntas.setText("Resultado");
+        
         almacenarPreguntas.setText("");
         respuestaA.setText("");
         respuestaB.setText("");
         respuestaC.setText("");
         respuestaD.setText("");
 
-        
         labelSegundos.setVisible(false);
+
+        // Configurar un temporizador para esperar 10 segundos
+        Timer temporizador = new Timer(1500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Se ejecutará después de 10 segundos
+                //cerrar ventana actual
+                LUCKY_WORDS_2 ventanaActual = (LUCKY_WORDS_2) SwingUtilities.getWindowAncestor(botonA);
+                ventanaActual.dispose();
+                //abrir nueva ventana
+                Modos_de_juego newframe = new Modos_de_juego();
+                newframe.setVisible(true);
+
+                this.dispose();
+                // Detener el temporizador después de mostrar la nueva ventana
+                ((Timer) e.getSource()).stop();
+            }
+
+            private void dispose() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+
+        // Iniciar el temporizador
+        temporizador.start();
+
+        JOptionPane.showMessageDialog(this, "GAME OVER", "", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -208,7 +230,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
             num[i] = random.nextInt(10) + 1;
         }
 
-        if (numpregunta > 30) {
+        if (numpregunta > 15) { // opcion de modificar en num de preguntas
             resultadoFinal();
 
         } else {
@@ -244,8 +266,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
                         respuesta[j]);
             }
 
-            
-            
         }
 
     }
@@ -257,7 +277,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         respuestaB.setText(resp2);
         respuestaC.setText(resp3);
         respuestaD.setText(resp4);
-        
+
     }
 
     /**
@@ -280,137 +300,122 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         respuestaC = new javax.swing.JTextField();
         respuestaD = new javax.swing.JTextField();
         labelSegundos = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelFondo2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 255, 204));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contarPreguntas.setEditable(false);
+        contarPreguntas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         contarPreguntas.setText("contarPreguntas");
         contarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contarPreguntasActionPerformed(evt);
             }
         });
+        getContentPane().add(contarPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 147, -1));
 
         almacenarPreguntas.setEditable(false);
+        almacenarPreguntas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        almacenarPreguntas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         almacenarPreguntas.setText("almacenarPreguntas");
         almacenarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 almacenarPreguntasActionPerformed(evt);
             }
         });
+        getContentPane().add(almacenarPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 36, 530, 40));
 
+        botonA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonA.setText("A");
         botonA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAActionPerformed(evt);
             }
         });
+        getContentPane().add(botonA, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 59, 39));
 
+        botonB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonB.setText("B");
         botonB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBActionPerformed(evt);
             }
         });
+        getContentPane().add(botonB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 59, 40));
 
+        botonC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonC.setText("C");
         botonC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCActionPerformed(evt);
             }
         });
+        getContentPane().add(botonC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 59, 40));
 
+        botonD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonD.setText("D");
         botonD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDActionPerformed(evt);
             }
         });
+        getContentPane().add(botonD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 59, 40));
 
         respuestaA.setEditable(false);
+        respuestaA.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         respuestaA.setText("jTextField2");
         respuestaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 respuestaAActionPerformed(evt);
             }
         });
+        getContentPane().add(respuestaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 92, 400, 40));
 
         respuestaB.setEditable(false);
+        respuestaB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         respuestaB.setText("jTextField2");
+        getContentPane().add(respuestaB, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 142, 400, 40));
 
         respuestaC.setEditable(false);
+        respuestaC.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         respuestaC.setText("jTextField2");
+        respuestaC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                respuestaCActionPerformed(evt);
+            }
+        });
+        getContentPane().add(respuestaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 190, 400, 40));
 
         respuestaD.setEditable(false);
+        respuestaD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         respuestaD.setText("jTextField2");
+        getContentPane().add(respuestaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 398, 40));
 
         labelSegundos.setEditable(false);
+        labelSegundos.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
+        labelSegundos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         labelSegundos.setText("timer");
         labelSegundos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 labelSegundosActionPerformed(evt);
             }
         });
+        getContentPane().add(labelSegundos, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 80, 100));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonA, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                            .addComponent(botonB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(respuestaA, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                            .addComponent(respuestaB)
-                            .addComponent(respuestaC)
-                            .addComponent(respuestaD))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 159, Short.MAX_VALUE)
-                        .addComponent(almacenarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(147, 147, 147))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(contarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(contarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(almacenarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonA, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(respuestaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(respuestaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(respuestaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(respuestaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(labelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reloj.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 250, 170));
+
+        jLabelFondo2.setBackground(new java.awt.Color(204, 255, 204));
+        jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondito.png"))); // NOI18N
+        getContentPane().add(jLabelFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondito.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 110, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -491,6 +496,10 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_almacenarPreguntasActionPerformed
 
+    private void respuestaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestaCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_respuestaCActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -530,6 +539,9 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     private javax.swing.JButton botonC;
     private javax.swing.JButton botonD;
     private javax.swing.JTextField contarPreguntas;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelFondo2;
     private javax.swing.JTextField labelSegundos;
     private javax.swing.JTextField respuestaA;
     private javax.swing.JTextField respuestaB;

@@ -34,11 +34,9 @@ public class login extends javax.swing.JFrame {
         jPanelFondo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Inicio = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Salir = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,17 +47,19 @@ public class login extends javax.swing.JFrame {
         jPanelFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, -20, 320, 320));
 
         Inicio.setBackground(new java.awt.Color(102, 204, 0));
-        Inicio.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Inicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 51), 5));
+        Inicio.setForeground(new java.awt.Color(255, 255, 102));
         Inicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InicioMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 InicioMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                InicioMouseExited(evt);
+            }
         });
-
-        jLabel1.setFont(new java.awt.Font("Ultraquick", 2, 31)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 217, 31));
-        jLabel1.setText("EMPIEZA A JUGAR");
-        jLabel1.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Ultraquick", 2, 31)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 204));
@@ -69,33 +69,35 @@ public class login extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
         Inicio.setLayout(InicioLayout);
         InicioLayout.setHorizontalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-            .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InicioLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(10, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InicioLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         InicioLayout.setVerticalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-            .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InicioLayout.createSequentialGroup()
-                    .addContainerGap(13, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addContainerGap(13, Short.MAX_VALUE)))
+            .addGroup(InicioLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanelFondo.add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 290, 70));
+        jPanelFondo.add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 340, 70));
 
         Salir.setBackground(new java.awt.Color(255, 217, 31));
-        Salir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Salir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 51), 5));
         Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,8 +116,11 @@ public class login extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Ultraquick", 2, 31)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SALIR");
         jLabel4.setToolTipText("");
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel4.setVerifyInputWhenFocusTarget(false);
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -125,38 +130,24 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Ultraquick", 2, 31)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 204, 0));
-        jLabel5.setText("SALIR");
-        jLabel5.setToolTipText("");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
-        });
-
         javax.swing.GroupLayout SalirLayout = new javax.swing.GroupLayout(Salir);
         Salir.setLayout(SalirLayout);
         SalirLayout.setHorizontalGroup(
             SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-            .addGroup(SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(SalirLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(11, Short.MAX_VALUE)))
+            .addGroup(SalirLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel4)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         SalirLayout.setVerticalGroup(
             SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-            .addGroup(SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
+            .addGroup(SalirLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jPanelFondo.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, 110, 60));
+        jPanelFondo.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 140, 60));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/font.png"))); // NOI18N
         jPanelFondo.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -165,7 +156,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +167,8 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseEntered
-     
+Inicio.setBackground(new Color(255,255,51));
+jLabel3.setForeground(new Color(102,204,0));
     }//GEN-LAST:event_InicioMouseEntered
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
@@ -184,7 +176,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
-       
+System.exit(0);       
     }//GEN-LAST:event_SalirMouseClicked
 
     private void SalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMousePressed
@@ -192,31 +184,46 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirMousePressed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       LUCKY_WORDS_2 newframe = new LUCKY_WORDS_2 ();
+      LUCKY_WORDS_2 newframe = new LUCKY_WORDS_2  ();
         newframe.setVisible(true);
         
-        this.dispose();
+        this.dispose();     
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
  System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseEntered
-
     private void SalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseEntered
-      Salir.setBackground(new Color(102,204,0));
+Salir.setBackground(new Color(204,255,51));
+jLabel4.setForeground(Color.red);
     }//GEN-LAST:event_SalirMouseEntered
 
     private void SalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseExited
-    
+   Salir.setBackground(new Color(255,217,31));
+   jLabel4.setForeground(new Color(255,255,204));
     }//GEN-LAST:event_SalirMouseExited
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+      
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void InicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseClicked
+        // TODO add your handling code here:
+        LUCKY_WORDS_2 newframe = new LUCKY_WORDS_2 ();
+        newframe.setVisible(true);
+        
+        this.dispose();    
+    }//GEN-LAST:event_InicioMouseClicked
+
+    private void InicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseExited
+        Inicio.setBackground(new Color(102,204,0));
+        jLabel3.setForeground(new Color(255,255,204));
+    }//GEN-LAST:event_InicioMouseExited
 
     /**
      * @param args the command line arguments
@@ -256,11 +263,9 @@ public class login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Inicio;
     private javax.swing.JPanel Salir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JPanel jPanelFondo;
     // End of variables declaration//GEN-END:variables
