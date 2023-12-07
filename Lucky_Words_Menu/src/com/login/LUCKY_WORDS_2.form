@@ -27,37 +27,35 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="contarPreguntas" max="32767" attributes="0"/>
-                  <Component id="almacenarPreguntas" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="botonA" pref="59" max="32767" attributes="0"/>
-                          <Component id="botonB" max="32767" attributes="0"/>
-                          <Component id="botonC" max="32767" attributes="0"/>
-                          <Component id="botonD" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="respuestaA" pref="398" max="32767" attributes="0"/>
-                          <Component id="respuestaB" max="32767" attributes="0"/>
-                          <Component id="respuestaC" max="32767" attributes="0"/>
-                          <Component id="respuestaD" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
+                              <Component id="almacenarPreguntas" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="botonA" pref="59" max="32767" attributes="0"/>
+                                  <Component id="botonB" max="32767" attributes="0"/>
+                                  <Component id="botonC" max="32767" attributes="0"/>
+                                  <Component id="botonD" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="respuestaA" pref="398" max="32767" attributes="0"/>
+                                  <Component id="respuestaB" max="32767" attributes="0"/>
+                                  <Component id="respuestaC" max="32767" attributes="0"/>
+                                  <Component id="respuestaD" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="buenas" min="-2" pref="81" max="-2" attributes="0"/>
                                   <Component id="labelSegundos" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="porcentage" min="-2" pref="109" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jProgressBar1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,16 +71,15 @@
               <Component id="almacenarPreguntas" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="respuestaA" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jProgressBar1" pref="25" max="32767" attributes="0"/>
-                  </Group>
                   <Component id="botonA" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="respuestaA" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="botonB" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="respuestaB" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -93,12 +90,9 @@
                           <Component id="respuestaC" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="buenas" min="-2" pref="39" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="buenas" alignment="1" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="porcentage" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -107,7 +101,7 @@
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="labelSegundos" pref="32" max="32767" attributes="0"/>
+              <Component id="labelSegundos" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -212,8 +206,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labelSegundosActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="jProgressBar1">
     </Component>
   </SubComponents>
 </Form>

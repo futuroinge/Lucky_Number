@@ -85,6 +85,9 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     int numpregunta = 1;
     int j = 0;
 
+    //num = random array
+    private int[] num = new int[pregunta.length];
+
     //Cronometro NO TOCAR 
     Timer timer = new Timer(1000, new ActionListener() {
         @Override
@@ -106,7 +109,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         siguientePregunta();
     }
-    
+
     //god bless mr fisher && mr yates
     public void mezclarInd(String[] preguntas, String[] respuestas) {
         int[] indice = new int[preguntas.length];
@@ -139,17 +142,21 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         botonC.setEnabled(false);
         botonD.setEnabled(false);
 
-        if (respuesta[j] != respuesta[j]) {
+        if (!(num[j] >= 1 && num[j] <= 2)) {
             respuestaA.setForeground(Color.RED);
+            life--;
         }
-        if (respuesta[j] != respuesta[j]) {
+        if (!(num[j] >= 3 && num[j] <= 5)) {
             respuestaB.setForeground(Color.RED);
+            life--;
         }
-        if (respuesta[j] != respuesta[j]) {
+        if (!(num[j] >= 6 && num[j] <= 7)) {
             respuestaC.setForeground(Color.RED);
+            life--;
         }
-        if (respuesta[j] != respuesta[j]) {
+        if (!(num[j] >= 8 && num[j] <= 10)) {
             respuestaD.setForeground(Color.RED);
+            life--;
         }
         Timer pause = new Timer(2000, new ActionListener() {
             @Override
@@ -170,11 +177,11 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
             }
 
         });
+        j++;
         pause.setRepeats(false);
         pause.start();
     }
 
-    
     private void resultadoFinal() {
         botonA.setEnabled(false);
         respuestaB.setEnabled(false);
@@ -194,16 +201,12 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
     }
 
-    //algo esta diferente aqui se encarga de saltar de pregunta en pregunta, tengo que modficar aqui 
-    //creo que puedo realizarlo en un metodo y usarlo de ahi 
-    //mismo probrema del index y opciones, se debe de arreglar con el metodo que voy crear 
+    //la magia 
     private void siguientePregunta() {
-        //aqui es 
         mezclarInd(pregunta, respuesta);
         Random random = new Random();
-        int[] num = new int[pregunta.length];
         for (int i = 0; i < pregunta.length; i++) {
-            num[i] = random.nextInt(10);
+            num[i] = random.nextInt(10) + 1;
         }
 
         if (numpregunta > total_preguntas) {
@@ -216,15 +219,48 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
             int randomIndex = num[j];
 
-            respuestaA.setText(respuesta[(randomIndex) % 4 + j]);
-            respuestaB.setText(respuesta[(randomIndex + 1) % 4 + j]);
-            respuestaC.setText(respuesta[(randomIndex + 2) % 4 + j]);
-            respuestaD.setText(respuesta[(randomIndex + 3) % 4 + j]);
+            if (randomIndex >= 1 && randomIndex <= 2) {
+                mostrarRespuestas(
+                        respuesta[j],
+                        respuesta[(j + 1)],
+                        respuesta[(j + 2)],
+                        respuesta[(j + 3)]);
+            } else if (randomIndex >= 3 && randomIndex <= 5) {
+                mostrarRespuestas(
+                        respuesta[(j + 1)],
+                        respuesta[j],
+                        respuesta[(j + 2)],
+                        respuesta[(j + 3)]);
+            } else if (randomIndex >= 6 && randomIndex <= 7) {
+                mostrarRespuestas(
+                        respuesta[(j + 2)],
+                        respuesta[(j + 3)],
+                        respuesta[j],
+                        respuesta[(j + 1)]);
+            } else if (randomIndex >= 8 && randomIndex <= 10) {
+                mostrarRespuestas(
+                        respuesta[(j + 3)],
+                        respuesta[(j + 2)],
+                        respuesta[(j + 1)],
+                        respuesta[j]);
+            }
 
-            j++;
+            
+            
         }
 
     }
+
+    private void mostrarRespuestas(String resp1, String resp2, String resp3, String resp4) {
+        // Aquí puedes manejar cómo muestras las respuestas
+        // Por ejemplo, podrías asignar las respuestas a tus componentes UI
+        respuestaA.setText(resp1);
+        respuestaB.setText(resp2);
+        respuestaC.setText(resp3);
+        respuestaD.setText(resp4);
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -247,7 +283,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         buenas = new javax.swing.JTextField();
         porcentage = new javax.swing.JTextField();
         labelSegundos = new javax.swing.JTextField();
-        jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -339,31 +374,29 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contarPreguntas)
-                    .addComponent(almacenarPreguntas)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonA, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                            .addComponent(botonB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(respuestaA, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                            .addComponent(respuestaB)
-                            .addComponent(respuestaC)
-                            .addComponent(respuestaD))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(almacenarPreguntas)
+                                .addGap(87, 87, 87))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botonA, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                                    .addComponent(botonB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(respuestaA, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                                    .addComponent(respuestaB)
+                                    .addComponent(respuestaC)
+                                    .addComponent(respuestaD))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(buenas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(porcentage, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 82, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)))))
+                                    .addComponent(porcentage, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 82, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -375,14 +408,13 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
                 .addComponent(almacenarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonA, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(respuestaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                    .addComponent(botonA, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addComponent(respuestaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(respuestaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -390,17 +422,15 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(respuestaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(buenas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(buenas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(porcentage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botonD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(respuestaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelSegundos, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addComponent(labelSegundos)
                 .addContainerGap())
         );
 
@@ -415,7 +445,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
         if (evt.getSource() == botonA) {
             String resp = "A";
-            if (resp == respuesta[j]) {
+            if (num[j] >= 1 && num[j] <= 2) {
                 correctas++;
             }
         }
@@ -430,7 +460,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
         if (evt.getSource() == botonB) {
             String resp = "B";
-            if (resp == respuesta[j]) {
+            if (num[j] >= 3 && num[j] <= 5) {
                 correctas++;
             }
         }
@@ -445,7 +475,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
         if (evt.getSource() == botonC) {
             String resp = "C";
-            if (resp == respuesta[j]) {
+            if (num[j] >= 6 && num[j] <= 7) {
                 correctas++;
             }
         }
@@ -460,7 +490,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
 
         if (evt.getSource() == botonD) {
             String resp = "D";
-            if (resp == respuesta[j]) {
+            if (num[j] >= 8 && num[j] <= 10) {
                 correctas++;
             }
         }
@@ -468,10 +498,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     }//GEN-LAST:event_botonDActionPerformed
 
     private void buenasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buenasActionPerformed
-        /*
-        corregir el codigo de buenas algo salio mal aqui
         
-         */
     }//GEN-LAST:event_buenasActionPerformed
 
     private void labelSegundosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelSegundosActionPerformed
@@ -491,10 +518,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     }//GEN-LAST:event_almacenarPreguntasActionPerformed
 
     private void porcentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porcentageActionPerformed
-        /*
-        corregir el codigo igual, algo salio mal aqui tambien 
         
-         */
     }//GEN-LAST:event_porcentageActionPerformed
 
     public static void main(String args[]) {
@@ -537,7 +561,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     private javax.swing.JButton botonD;
     private javax.swing.JTextField buenas;
     private javax.swing.JTextField contarPreguntas;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField labelSegundos;
     private javax.swing.JTextField porcentage;
     private javax.swing.JTextField respuestaA;
