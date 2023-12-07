@@ -195,8 +195,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         respuestaC.setText("");
         respuestaD.setText("");
 
-        buenas.setText("Correctas\n" + "(" + correctas + "/" + total_preguntas + ")");
-        porcentage.setText("Porcentage\n" + resultado + "%");
+        
         labelSegundos.setVisible(false);
 
     }
@@ -209,7 +208,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
             num[i] = random.nextInt(10) + 1;
         }
 
-        if (numpregunta > total_preguntas) {
+        if (numpregunta > 30) {
             resultadoFinal();
 
         } else {
@@ -280,12 +279,11 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         respuestaB = new javax.swing.JTextField();
         respuestaC = new javax.swing.JTextField();
         respuestaD = new javax.swing.JTextField();
-        buenas = new javax.swing.JTextField();
-        porcentage = new javax.swing.JTextField();
         labelSegundos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        contarPreguntas.setEditable(false);
         contarPreguntas.setText("contarPreguntas");
         contarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,6 +291,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
             }
         });
 
+        almacenarPreguntas.setEditable(false);
         almacenarPreguntas.setText("almacenarPreguntas");
         almacenarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,20 +344,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         respuestaD.setEditable(false);
         respuestaD.setText("jTextField2");
 
-        buenas.setText("Buenas");
-        buenas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buenasActionPerformed(evt);
-            }
-        });
-
-        porcentage.setText("Porcentage");
-        porcentage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                porcentageActionPerformed(evt);
-            }
-        });
-
+        labelSegundos.setEditable(false);
         labelSegundos.setText("timer");
         labelSegundos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,31 +359,28 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contarPreguntas)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonA, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                            .addComponent(botonB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(respuestaA, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                            .addComponent(respuestaB)
+                            .addComponent(respuestaC)
+                            .addComponent(respuestaD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 159, Short.MAX_VALUE)
+                        .addComponent(almacenarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(almacenarPreguntas)
-                                .addGap(87, 87, 87))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(botonA, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                                    .addComponent(botonB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(respuestaA, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                                    .addComponent(respuestaB)
-                                    .addComponent(respuestaC)
-                                    .addComponent(respuestaD))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buenas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(porcentage, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 82, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(contarPreguntas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,26 +395,21 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(respuestaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(respuestaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(respuestaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(respuestaB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(respuestaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(buenas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(porcentage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botonD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(respuestaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelSegundos)
-                .addContainerGap())
+                        .addComponent(respuestaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -497,10 +475,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         verRespuesta();   // TODO add your handling code here:
     }//GEN-LAST:event_botonDActionPerformed
 
-    private void buenasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buenasActionPerformed
-        
-    }//GEN-LAST:event_buenasActionPerformed
-
     private void labelSegundosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelSegundosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_labelSegundosActionPerformed
@@ -516,10 +490,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     private void almacenarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacenarPreguntasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_almacenarPreguntasActionPerformed
-
-    private void porcentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porcentageActionPerformed
-        
-    }//GEN-LAST:event_porcentageActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -559,10 +529,8 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     private javax.swing.JButton botonB;
     private javax.swing.JButton botonC;
     private javax.swing.JButton botonD;
-    private javax.swing.JTextField buenas;
     private javax.swing.JTextField contarPreguntas;
     private javax.swing.JTextField labelSegundos;
-    private javax.swing.JTextField porcentage;
     private javax.swing.JTextField respuestaA;
     private javax.swing.JTextField respuestaB;
     private javax.swing.JTextField respuestaC;
