@@ -271,8 +271,6 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
     }
 
     private void mostrarRespuestas(String resp1, String resp2, String resp3, String resp4) {
-        // Aquí puedes manejar cómo muestras las respuestas
-        // Por ejemplo, podrías asignar las respuestas a tus componentes UI
         respuestaA.setText(resp1);
         respuestaB.setText(resp2);
         respuestaC.setText(resp3);
