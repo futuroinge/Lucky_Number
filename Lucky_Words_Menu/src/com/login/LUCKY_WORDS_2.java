@@ -34,21 +34,29 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         "¿Qué océano se encuentra entre América y Europa?",
         "¿Cuál es el país más grande por área terrestre?",
         "¿Cuál es el país más pequeño del mundo?",
-        "¿Cuál es el país más grande de Asia?",
+        "¿Cuál es la capital de Japon?",
         "¿Cuál es el país con la mayor cantidad de islas en el mundo?",
         "¿Cuál es el país más pequeño de América del Sur?",
-        "¿Cuál es el país con mayor cantidad de volcanes activos?",
         "¿Cuál es el país más grande de África?",
         "¿Cuál es el país más pequeño de Asia?",
         "¿Cuál es el país más grande de Centroamérica?",
-        "¿Cuál es el país más grande de América del Sur?"
-
+        "¿Cuál es el país más grande de América del Sur?",
+        "¿Cuales son los puntos principales",
+        "¿Cual es el punto mas bajo de la Tierra?",
+        "¿Estrecho que separa Asia de Africa?",
+        "¿En que continente se encuentra el Polo sur?",
+        "¿Cual es el rio mas largo de Europa?",
+        "¿Cual es la Capital de Argentina?",
+        "¿¿Cual es la cuidad mas poblada del Mundo?",
+        "¿Cual es la Capital de Ecuador?",
+        "¿Cual es la Capital de Paraguay?",
+        "¿Cual es la Capital de España?"
     };
 
     //base de datos de las respuestas
     String[] respuesta = {
-        "Australia",
-        "Canadá",
+        "Canberra",
+        "Ottawa",
         "Wellington",
         "Pretoria",
         "Santiago",
@@ -69,15 +77,25 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
         "Océano Atlántico",
         "Rusia",
         "Nauru",
-        "Rusia",
+        "Tokio",
         "Suecia",
         "Surinam",
-        "Indonesia",
         "Argelia",
         "Maldivas",
         "Nicaragua",
-        "Brasil"
+        "Brasil",
+        "Norte, Sur, Este y Oeste",
+        "Fosa de las Marianas",
+        "Gilbraltar",
+        "Antartida",
+        "Volga",
+        "Buenos Aires",
+        "Shangai",
+        "Quito",
+        "Asuncion",
+        "Madrid"
     };
+
 
     //variables clave
     int life = 3;//averiguar esta en que parte poner la vida
@@ -230,7 +248,7 @@ public class LUCKY_WORDS_2 extends javax.swing.JFrame {
             num[i] = random.nextInt(10) + 1;
         }
 
-        if (numpregunta > 15) { // opcion de modificar en num de preguntas
+        if (numpregunta > 12) { // opcion de modificar en num de preguntas
             resultadoFinal();
 
         } else {
