@@ -4,8 +4,7 @@ package luckycolors;
 Carlos Alberto Cerda Altamirano
 No.C 23550348
 Daniel Gandara Tapia 
-No.C 25503--
-
+No.C 2550374
 Grupo C 
 Estructura de Datos
  */

@@ -6,25 +6,25 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class GameWindow extends javax.swing.JFrame {
-//Variables used later
+//Variables 
     private Stack<String>[] viales;
     private int selectedVial = -1;
     private Border border = BorderFactory.createLineBorder(Color.GRAY, 5);
     private int dificulty;
 
-//Array with JPanels to access them individually
+//Array con JPanels para tener acceso individual
     public static JPanel[] vialPanels1;
     public static JPanel[] vialPanels2;
     public static JPanel[] vialPanels3;
     public static JPanel[] vialPanels4;
     public static JPanel[] vialPanels5;
     
-//Methods
+//Metodos
     public GameWindow() {
         initComponents();
     }   
 
-    //Start of the game, limits the amount of viales, and paint them all
+    //Inicia el juego, Acorde a la dificultad llena y oculta los viales necesarios
     public GameWindow(Stack<String>[] viales, int dificulty) {
         this.dificulty = dificulty;
         this.viales = viales;
@@ -56,7 +56,7 @@ public class GameWindow extends javax.swing.JFrame {
         }
     }
     
-    //Translate the String to color
+    //Traductor de String a Color
     private Color getColor(String color) {
         if (color == null) {
             return Color.GRAY;
@@ -75,17 +75,18 @@ public class GameWindow extends javax.swing.JFrame {
         }
     }
 
-    //Get the string in each vial, translate it and paint it
+    //Obtiene los strings de cada vial, las traduce y pinta
     private void paintViales(JPanel[] vialPanel, int numVial) {
         for (int i = 0; i < vialPanel.length; i++) {
-            String color = (i <= viales[numVial - 1].tope) ? viales[numVial - 1].getColorAt(i) : null; // Ensure valid access
-            Color c = getColor(color); // Call getColor() for possible nulls
+            //Separating null from strings
+            String color = (i <= viales[numVial - 1].tope) ? viales[numVial - 1].getColorAt(i) : null; 
+            Color c = getColor(color); 
             vialPanel[i].setBackground(c);
         }
 
     }
 
-    //it uptades the panels, according to the difficulty 
+    //Actualiza los colores de los paneles acorde a su dificultad
     private void uptadeVialPanels(int dificulty, JPanel[] vialPanels1, JPanel[] vialPanels2, JPanel[] vialPanels3, JPanel[] vialPanels4, JPanel[] vialPanels5) {
         switch (dificulty) {
             case 3:
@@ -110,7 +111,7 @@ public class GameWindow extends javax.swing.JFrame {
         };
     }
 
-//Extra and maybe unnecessary
+    //Aplica un reset a los bordes
     private void quitBorders() {
         Vial1.setBorder(null);
         Vial2.setBorder(null);
@@ -119,56 +120,48 @@ public class GameWindow extends javax.swing.JFrame {
         Vial5.setBorder(null);
     }
 
-//Changes the color(apparently)
+    //Cambia el color
     private void changeColor(int fromVial, int toVial) {
-        fromVial = fromVial - 1; // Adjust for 0-based index
-        toVial = toVial - 1; // Adjust for 0-based index
+        //Actualiza el indice para trabajar con arrays
+        fromVial = fromVial - 1; 
+        toVial = toVial - 1; 
 
-    // Check if the fromVial has colors to pop
-    if (viales[fromVial].isEmpty()) {
-        System.out.println("No color to move.");
-        return; // Exit if the source vial is empty
-    }
+        //edgecase 1
+        if (viales[fromVial].isEmpty()) {
+            System.out.println("No color to move.");
+            return; 
+        }
+        String colorToMove = viales[fromVial].pop(); 
 
-    // Get the top color from the source vial and pop it
-    String colorToMove = viales[fromVial].pop(); // Remove the color from source vial
-
-    // Check if the destination vial is empty or has the same color
-    if (viales[toVial].isEmpty() || viales[toVial].peek().equals(colorToMove)) {
-        viales[toVial].push(colorToMove); // Move the color to the destination vial
-    } else {
-        System.out.println("Cannot move to a different color stack.");
-        // Optionally, you could push the color back to the original vial if the move failed.
-        viales[fromVial].push(colorToMove);
-        return; // Exit if the colors don't match
+        //edgecase 2
+        if(viales[toVial].isFull()){
+            System.out.println("Stack is already full");
+            viales[fromVial].push(colorToMove);
+            return;
+        }else{
+        //Traslado
+            viales[toVial].push(colorToMove);
+        }
+        uptadeVialPanels(dificulty, vialPanels1, vialPanels2, vialPanels3, vialPanels4, vialPanels5);
     }
-    // Update the UI after the change
-    uptadeVialPanels(dificulty, vialPanels1, vialPanels2, vialPanels3, vialPanels4, vialPanels5);
-    }
+    
 
     private void handleVialClick(int vialNumber) {
         if (selectedVial == -1) {
-            selectedVial = vialNumber;  // Set the first vial (source)
+            // Inicializa el vial a usar 
+            selectedVial = vialNumber;  
             System.out.println("Selected source vial: " + selectedVial);
         } else {
-            int toVial = vialNumber;  // Set the second vial (destination)
-            System.out.println("Selected destination vial: " + toVial);
-            
-            changeColor(selectedVial, toVial);  // Swap colors between vials
-            uptadeVialPanels(dificulty, vialPanels1, vialPanels2, vialPanels3, vialPanels4, vialPanels5);  // Repaint the vials
-            
-            // Reset the selection
+            // Obtiene el segundo vial
+            int toVial = vialNumber;  
+            System.out.println("Selected destination vial: " + toVial);  
+            //Traslado
+            changeColor(selectedVial, toVial);          
+            //Reset   
             selectedVial = -1;
         }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
 

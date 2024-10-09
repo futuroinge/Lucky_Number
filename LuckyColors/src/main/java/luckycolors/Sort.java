@@ -11,6 +11,7 @@ public class Sort {
     private String[] colors;
 
     @SuppressWarnings("unchecked")
+    //Inicializa las variables y estructuras
     public Sort(int numViales, String[] colors) {
         this.viales = new Stack[numViales];
         this.colors = colors;
@@ -20,15 +21,16 @@ public class Sort {
         }
     }
 
+    //Llena los viales aleatoriamente
     public void fillVials() {
         for (int i = 0; i < viales.length; i++) {
+            //Deja el ultimo vial vacio
             if (i == viales.length - 1) {
                 break;
-            }
-            
+            } 
             while (!viales[i].isFull()) {
                 String var = colors[random.nextInt(colors.length)];
-
+                //Evita un exceso de colores
                 if (!map.containsKey(var)) {
                     map.put(var, 1);
                 } else if (map.get(var) >= 4) {
@@ -36,11 +38,13 @@ public class Sort {
                 } else {
                     map.put(var, map.get(var) + 1);
                 }
+                //Llena color
                 viales[i].push(var);
             }
         }
     }
     
+    //regresa los viales mezclados
     public Stack<String>[] retrieve() {
         return viales;
     }

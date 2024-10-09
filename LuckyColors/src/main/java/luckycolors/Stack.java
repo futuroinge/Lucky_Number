@@ -1,8 +1,6 @@
 package luckycolors;
 
-
 public class Stack<E> {
-
     int maxsize = 4;
     E pila[];
     int tope;
