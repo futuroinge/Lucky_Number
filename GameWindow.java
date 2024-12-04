@@ -12,7 +12,7 @@ public class GameWindow extends javax.swing.JFrame {
     private int selectedVial = -1;
     private Border border = BorderFactory.createLineBorder(Color.GRAY, 5);
     private int dificulty;
-
+    private int ptj;
 //Array con JPanels para tener acceso individual
     public static JPanel[] vialPanels1;
     public static JPanel[] vialPanels2;
@@ -90,26 +90,27 @@ public class GameWindow extends javax.swing.JFrame {
     //Actualiza los colores de los paneles acorde a su dificultad
     private void uptadeVialPanels(int dificulty, JPanel[] vialPanels1, JPanel[] vialPanels2, JPanel[] vialPanels3, JPanel[] vialPanels4, JPanel[] vialPanels5) {
         switch (dificulty) {
-            case 3:
+            case 3 -> {
                 paintViales(vialPanels1, 1);
                 paintViales(vialPanels2, 2);
                 paintViales(vialPanels3, 3);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 paintViales(vialPanels1, 1);
                 paintViales(vialPanels2, 2);
                 paintViales(vialPanels3, 3);
                 paintViales(vialPanels4, 4);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 paintViales(vialPanels1, 1);
                 paintViales(vialPanels2, 2);
                 paintViales(vialPanels3, 3);
                 paintViales(vialPanels4, 4);
                 paintViales(vialPanels5, 5);
-                break;
+            }
 
-        };
+        }
+;
     }
 
     //Aplica un reset a los bordes
@@ -686,7 +687,7 @@ public class GameWindow extends javax.swing.JFrame {
     }// </editor-fold>                        
 
 
-private void checkIfWon() {
+    private void checkIfWon() {
     boolean hasWon = true;
     HashSet<String> usedColors = new HashSet<>(); // Para almacenar los colores ya utilizados
 
@@ -696,7 +697,7 @@ private void checkIfWon() {
 
         // Si el vial está vacío, lo ignoramos y continuamos revisando los demás
         if (vial.isEmpty()) {
-            System.out.println("Vial " + (i + 1) + " está vacío y se ignora.");
+            System.out.println("Vial " + (i + 1) + " está vacio y se ignora.");
             continue;
         }
 
@@ -713,7 +714,7 @@ private void checkIfWon() {
 
         for (int j = 0; j <= vial.tope; j++) { // Asumiendo que `tope` es el índice del tope de la pila
             String color = vial.getColorAt(j); // Obtener el color en una posición específica
-            System.out.println("Comparando color en posición " + j + ": " + color);
+            System.out.println("Comparando color en posicion " + j + ": " + color);
             if (!color.equals(firstColor)) {
                 System.out.println("Color diferente encontrado en el vial " + (i + 1));
                 hasWon = false; // Si hay un color diferente, no se ha ganado
@@ -735,12 +736,12 @@ private void checkIfWon() {
 
     // Si hasWon sigue siendo true, significa que se cumplen las condiciones para ganar
     if (hasWon) {
-         javax.swing.JOptionPane.showMessageDialog(null, "¡Has ganado!");
-         this.dispose();
-          Menu menu = new Menu();
-        menu.setVisible(true);
+        int score = 100 - ptj/2;
+        Score s = new Score(dificulty-2, score);
+        s.setVisible(true);
+        dispose();
     } else {
-        System.out.println("Aún no has ganado.");
+        System.out.println("Aun no has ganado.");
     }
 }
     private void Vial1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vial1MouseClicked
@@ -748,7 +749,14 @@ private void checkIfWon() {
         quitBorders();
         Vial1.setBorder(border);
         System.out.println("Vial1 clicked");
-         
+        if(dificulty==5){
+           ptj ++;  
+        }if(dificulty==4){
+           ptj =ptj+2;  
+        }if(dificulty==3){
+           ptj =ptj+3;  
+        }
+        
     }//GEN-LAST:event_Vial1MouseClicked
 
     private void Vial4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vial4MouseClicked
@@ -756,7 +764,13 @@ private void checkIfWon() {
         quitBorders();
         Vial4.setBorder(border);
         System.out.println("Vial4 clicked");
-   
+      if(dificulty==5){
+           ptj ++;  
+        }if(dificulty==4){
+           ptj =ptj+2;  
+        }if(dificulty==3){
+           ptj =ptj+3;  
+        }
     }//GEN-LAST:event_Vial4MouseClicked
 
     private void Vial2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vial2MouseClicked
@@ -764,7 +778,13 @@ private void checkIfWon() {
         quitBorders();
         Vial2.setBorder(border);
         System.out.println("Vial2 clicked");
-       
+       if(dificulty==5){
+           ptj ++;  
+        }if(dificulty==4){
+           ptj =ptj+2;  
+        }if(dificulty==3){
+           ptj =ptj+3;  
+        }
     }//GEN-LAST:event_Vial2MouseClicked
 
     private void Vial3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vial3MouseClicked
@@ -772,7 +792,13 @@ private void checkIfWon() {
         quitBorders();
         Vial3.setBorder(border);
         System.out.println("Vial3 clicked");
-       
+       if(dificulty==5){
+           ptj ++;  
+        }if(dificulty==4){
+           ptj =ptj+2;  
+        }if(dificulty==3){
+           ptj =ptj+3;  
+        }
     }//GEN-LAST:event_Vial3MouseClicked
 
     private void Vial5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vial5MouseClicked
@@ -780,7 +806,13 @@ private void checkIfWon() {
         quitBorders();
         Vial5.setBorder(border);
         System.out.println("Vial5 clicked");
-          
+       if(dificulty==5){
+           ptj ++;  
+        }if(dificulty==4){
+           ptj =ptj+2;  
+        }if(dificulty==3){
+           ptj =ptj+3;  
+        }
     }//GEN-LAST:event_Vial5MouseClicked
 
     /**
